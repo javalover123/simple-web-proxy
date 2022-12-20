@@ -150,8 +150,9 @@
       bypassUpstreamProxyHosts[host.toLowerCase()] = true;
     });
   }
+
   const WHITE_LIST = [/marsgis|mars2d|mars3d/, /localhost|127\.0\.0\.1/];
-  app.get("/proxy/*", function (req, res, next) {
+  const checkAuth = function (req, res) {
     const origin = req.get("origin");
     const hasAuth = WHITE_LIST.some((rule) => {
       if (typeof rule === "string") {
@@ -169,6 +170,10 @@
           "当前域名无权限，请自行部署代理服务：https://github.com/muyao1987/web-proxy"
         );
     }
+  }
+
+  app.get("/proxy/*", function (req, res, next) {
+    // checkAuth(req, res)
 
     // look for request like http://localhost:8080/proxy/http://example.com/file?query=1
     var remoteUrl = getRemoteUrlFromParam(req);
