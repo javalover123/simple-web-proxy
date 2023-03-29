@@ -6,7 +6,18 @@
  
 ### 首次运行前安装依赖
  `npm install` 或 `cnpm install`
- 
+
+### 设置代理
+ 修改 package.json 中，scripts 里面 serve 的值，如增加v2rayN代理 --upstream-proxy http://127.0.0.1:10809
+
+| 参数                        | 描述                                                         | 默认值 |
+| --------------------------- | ------------------------------------------------------------ | ------ |
+| port                        | 监听端口                                                     | 1987   |
+| public                      | 运行监听端口是否为公开服务                                   |        |
+| upstream-proxy              | A standard proxy server that will be used to retrieve data.  Specify a URL including port, e.g. "http://proxy:8000". |        |
+| bypass-upstream-proxy-hosts | A comma separated list of hosts that will bypass the specified upstream_proxy, e.g. "lanhost1,lanhost2" |        |
+| help                        | Show this help.                                              |        |
+
 ### 运行启动代理服务
  `npm run serve` 
 
